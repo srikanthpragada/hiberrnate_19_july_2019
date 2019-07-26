@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="entities.Employee" table="hb_employees">
+		<id name="id" type="int">
+			<generator class="increment" />
+		</id>
+		<property name="name" length="30" type="java.lang.String" />
+		<many-to-one class="entities.Department" name="department" />
+	</class>
+
+	<class name="entities.Department" table="hb_departments">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<property length="20" name="name" />
+		<set inverse="true" name="employees">
+			<key column="department" />
+			<one-to-many class="entities.Employee" />
+		</set>
+
+	</class>
+</hibernate-mapping>

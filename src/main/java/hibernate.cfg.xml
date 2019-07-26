@@ -15,5 +15,6 @@
 
         <mapping  resource="Job.hbm.xml"/>
         <mapping  resource="entities/course.hbm.xml"/>
+        <mapping  resource="entities/hr.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
