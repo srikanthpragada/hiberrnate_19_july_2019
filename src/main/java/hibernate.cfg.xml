@@ -11,10 +11,16 @@
         <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
         <property name="hibernate.show_sql">true</property>
 
-        <property name="hibernate.hbm2ddl.auto">update</property>
-
+        <property name="hibernate.hbm2ddl.auto">none</property>
+   <!-- 
         <mapping  resource="Job.hbm.xml"/>
         <mapping  resource="entities/course.hbm.xml"/>
         <mapping  resource="entities/hr.hbm.xml"/>
+        <mapping  resource="entities/catalog.hbm.xml"/>
+        <mapping  resource="inh/tph.hbm.xml"/> 
+        <mapping  resource="inh/tps.hbm.xml"/>  -->
+        
+        <mapping  resource="query/catalog.hbm.xml"/>
+        
     </session-factory>
 </hibernate-configuration>

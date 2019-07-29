@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="entities.Book" table="hb_books">
+		<id name="id" type="int">
+			<generator class="increment" />
+		</id>
+		<property name="title" length="30" type="java.lang.String" />
+		<set cascade="all" name="authors" table="hb_bookauthors">
+			 <key column="bookid"/>
+			 <many-to-many class="entities.Author" column="authorid"/>
+        </set>
+	</class>
+
+	<class name="entities.Author" table="hb_authors">
+		<id name="id">
+			<generator class="increment" />
+		</id>
+		<property length="20" name="name" />
+		<set inverse="true" name="books" table="hb_bookauthors">
+			 <key column="authorid"/>
+			 <many-to-many class="entities.Book" column="bookid"/>
+        </set>
+	</class>
+</hibernate-mapping>
