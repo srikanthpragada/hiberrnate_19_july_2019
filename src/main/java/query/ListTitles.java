@@ -12,11 +12,10 @@ public class ListTitles {
 		c.configure();
 		Session session = c.buildSessionFactory().openSession();
 
-		List<Title> titles = session.createQuery("from Title t where t.price > 500").list();
+		List<Title> titles = session.createQuery("from Title t join fetch t.subject").list();
 		for (Title t : titles) {
-			//System.out.printf("%-30s  %-20s  %d\n", t.getTitle(),
-			//		 t.getSubject().getSubname(), t.getPrice());
-			System.out.printf("%-30s %d\n", t.getTitle(),t.getPrice());
+			System.out.printf("%-30s  %-20s  %d\n", t.getTitle(),
+			    t.getSubject().getSubname(), t.getPrice());
 		}
 		session.close();
 	}

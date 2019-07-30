@@ -9,15 +9,14 @@ import org.hibernate.cfg.Configuration;
 public class HQLDemo {
     public static void main(String[] args) {
       Configuration c = new Configuration();
-      c.configure("query/hibernate.cfg.xml");
-      c.addResource("query/catalog.hbm.xml");
+      c.configure();
       Session session = c.buildSessionFactory().openSession();
       Scanner s = new Scanner(System.in);
       String query;
       while ( true){
-          System.out.println("Enter Query : ");
+          System.out.println("Enter Query [enter to stop] : ");
           query = s.nextLine();
-          if ( query.length() == 0 ) break;
+          if (query.length() == 0 ) break;
           try {
            List result = session.createQuery(query).list();
            System.out.println("Query Result");
